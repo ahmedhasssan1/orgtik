@@ -15,6 +15,8 @@ describe('Requests API (e2e)', () => {
       page: 1,
       limit: 20,
       total: 0,
+      hasNextPage: false,
+      hasPrevPage: false,
     }),
     assign: jest
       .fn()
@@ -60,6 +62,8 @@ describe('Requests API (e2e)', () => {
         page: 1,
         limit: 20,
         total: 0,
+        hasNextPage: false,
+        hasPrevPage: false,
       });
   });
 

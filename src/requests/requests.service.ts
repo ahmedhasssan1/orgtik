@@ -39,6 +39,8 @@ export class RequestsService {
     page: number;
     limit: number;
     total: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
   }> {
     const builder = this.requests.createQueryBuilder('request');
     if (user.role === UserRole.AGENT) {
@@ -59,7 +61,14 @@ export class RequestsService {
       .skip((query.page - 1) * query.limit)
       .take(query.limit)
       .getManyAndCount();
-    return { data, page: query.page, limit: query.limit, total };
+    return {
+      data,
+      page: query.page,
+      limit: query.limit,
+      total,
+      hasNextPage: query.page * query.limit < total,
+      hasPrevPage: query.page > 1,
+    };
   }
 
   async getById(id: string, user: User): Promise<SalesRequest> {

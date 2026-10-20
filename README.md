@@ -133,19 +133,6 @@ All query parameters are optional. `search` matches external ID, customer name,
 or email. `limit` is capped at 100. Agent results are always restricted to the
 authenticated agent's assignments.
 
-The response is paginated and includes `hasNextPage` and `hasPrevPage` flags:
-
-```json
-{
-  "data": [],
-  "page": 1,
-  "limit": 20,
-  "total": 0,
-  "hasNextPage": false,
-  "hasPrevPage": false
-}
-```
-
 ### Get request and activity history
 
 `GET /requests/{requestId}`
