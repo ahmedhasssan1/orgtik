@@ -55,7 +55,7 @@ describe('Requests API (e2e)', () => {
   it('accepts an authenticated admin and returns a paginated response', async () => {
     await request(app.getHttpServer())
       .get('/requests?page=1&limit=20')
-      .set('x-user-role', 'admin')
+      .set('user-role', 'admin')
       .expect(200)
       .expect({
         data: [],
@@ -70,7 +70,7 @@ describe('Requests API (e2e)', () => {
   it('forbids agents from assigning requests', async () => {
     await request(app.getHttpServer())
       .post('/requests/123e4567-e89b-12d3-a456-426614174000/assign')
-      .set('x-user-role', 'agent')
+      .set('user-role', 'agent')
       .send({ agentId: 'agent-2' })
       .expect(403);
   });
@@ -78,7 +78,7 @@ describe('Requests API (e2e)', () => {
   it('allows admins to assign requests', async () => {
     await request(app.getHttpServer())
       .post('/requests/123e4567-e89b-12d3-a456-426614174000/assign')
-      .set('x-user-role', 'admin')
+      .set('user-role', 'admin')
       .send({ agentId: 'agent-2' })
       .expect(201)
       .expect({ id: 'request-1', assignedTo: 'agent-2' });

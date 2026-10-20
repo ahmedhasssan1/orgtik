@@ -54,15 +54,15 @@ Protected `/requests` endpoints use a single mock header instead of real
 authentication:
 
 ```text
-x-user-role: admin
+user-role: admin
 ```
 
-Use `x-user-role: admin` for an admin. Any other non-empty value is treated as
+Use `user-role: admin` for an admin. Any other non-empty value is treated as
 an agent, and that value becomes the agent's ID (for example `agent` or
 `agent-1`):
 
 ```text
-x-user-role: agent-1
+user-role: agent-1
 ```
 
 Admins can list and view every request, assign requests, and change status.
@@ -76,7 +76,7 @@ Calling a protected endpoint without this header returns:
 
 ```json
 {
-  "message": "Provide the x-user-role header.",
+  "message": "Provide the user-role header.",
   "error": "Unauthorized",
   "statusCode": 401
 }
@@ -86,9 +86,9 @@ Calling a protected endpoint without this header returns:
 
 Add one request **Header**:
 
-| Header        | Value   |
-| ------------- | ------- |
-| `x-user-role` | `admin` |
+| Header      | Value   |
+| ----------- | ------- |
+| `user-role` | `admin` |
 
 For an agent, use their ID as the value, for example `agent-1`.
 
@@ -96,14 +96,14 @@ For an agent, use their ID as the value, for example `agent-1`.
 
 ```bash
 # Admin
-curl -H "x-user-role: admin" http://localhost:3000/requests
+curl -H "user-role: admin" http://localhost:3000/requests
 
 # Agent
-curl -H "x-user-role: agent-1" http://localhost:3000/requests
+curl -H "user-role: agent-1" http://localhost:3000/requests
 ```
 
 The `POST /requests/{id}/assign` endpoint additionally requires
-`x-user-role: admin`; agents receive `403 Forbidden`.
+`user-role: admin`; agents receive `403 Forbidden`.
 
 ## API
 

@@ -11,10 +11,10 @@ import type { AuthenticatedRequest, User } from '../interfaces/user.interface';
 export class MockAuthGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest<AuthenticatedRequest>();
-    const role = request.header('x-user-role');
+    const role = request.header('user-role');
 
     if (!role) {
-      throw new UnauthorizedException('Provide the x-user-role header.');
+      throw new UnauthorizedException('Provide the user-role header.');
     }
 
     if ((role as UserRole) === UserRole.ADMIN) {
