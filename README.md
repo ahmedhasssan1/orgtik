@@ -23,6 +23,20 @@ managing assignments and status, and tracking request activity.
    `DB_DATABASE` to match your PostgreSQL instance. The sample credentials are
    for local development only; `.env` is ignored by Git.
 
+   The `.env` file looks like:
+
+   ```env
+   PORT=3000
+
+   # PostgreSQL connection
+   DB_HOST=
+   DB_PORT=
+   DB_USERNAME=
+   DB_PASSWORD=
+   DB_DATABASE=
+   DB_SYNCHRONIZE=
+   ```
+
 3. Start the API:
 
    ```bash
