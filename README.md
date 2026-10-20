@@ -16,7 +16,6 @@ managing assignments and status, and tracking request activity.
 
    ```bash
    npm install
-   Copy-Item .env.example .env
    ```
 
    Edit `.env` and set `DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`, and
