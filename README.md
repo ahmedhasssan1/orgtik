@@ -25,7 +25,7 @@ managing assignments and status, and tracking request activity.
    The `.env` file looks like:
 
    ```env
-   PORT=3000
+   PORT=
 
    # PostgreSQL connection
    DB_HOST=
